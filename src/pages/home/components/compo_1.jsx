@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import CompoChildTwo from './compo_2';
 import { myContext } from '../context/homeContext';
 
