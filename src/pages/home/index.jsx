@@ -1,19 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import MyProvider from './context/homeContext';
 import CharacterList from './components/characterMaster';
 import Character from './components/characterDetails';
+import { Switch, Route } from 'react-router-dom';
 
 const HomePage = () => {
-    const [characterSelected, setCharacterSelected] = useState(null);
 
     return (
         <MyProvider>
-            {/*<CompoChildOne message='my message' />*/}
-            {
-                (!characterSelected) ?
-                    (<CharacterList onSelectCharacter={setCharacterSelected} />)
-                    : (<Character onBack={setCharacterSelected} characterId={characterSelected} />)
-            }
+            <Switch>
+                <Route exact path='/' component={CharacterList} />
+                <Route exact path='/character/:id' component={Character} />
+            </Switch>
         </MyProvider>
     )
 }
