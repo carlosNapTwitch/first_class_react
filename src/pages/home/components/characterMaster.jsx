@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { peoples } from '../../../services';
-import { Link } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
+
+function useQuery() {
+    return new URLSearchParams(useLocation().search);
+}
 
 const CharacterList = ({ onSelectCharacter }) => {
     const [characters, setCharacters] = useState(null);
+    const history = useHistory();
+    let query = useQuery();
 
     const fetchData = async (urlParam) => {
         const serverData = await peoples.getAll(urlParam);
@@ -11,12 +17,13 @@ const CharacterList = ({ onSelectCharacter }) => {
     }
 
     useEffect(() => {
-        fetchData();
+        fetchData(`?page=${query.get("page") || ''}`);
     }, []);
 
     const requestMoreData = (serverUrl) => {
         const [baseUrl, params] = serverUrl.split('?');
-        fetchData(`?${params}`);
+        history.push(`?${params}`);
+        history.go(0);
     }
 
     const onPickCharacter = (people) => {

@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { peoples } from '../../../services';
 import {
-    useParams
+    useParams,
+    useHistory
 } from "react-router-dom";
 
-const Character = ({ onBack }) => {
+const Character = () => {
+
+    const history = useHistory();
 
     let { id } = useParams();
 
@@ -22,7 +25,7 @@ const Character = ({ onBack }) => {
 
     return (
         <>
-            <button onClick={() => onBack(null)} style={{ display: 'block' }}>Regresar {id}</button>
+            <button onClick={() => history.goBack()} style={{ display: 'block' }}>Regresar {id}</button>
             {characterData && (<span>hola {characterData.name}</span>)}
         </>
     )
