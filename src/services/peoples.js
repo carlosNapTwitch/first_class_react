@@ -1,16 +1,14 @@
-import serviceConfig from './config';
+import apiCall from "./apiCall";
 
 const peoples = {
-    getAll: async (urlParam = '') => {
-        const result = await fetch(`${serviceConfig.baseUrl}/people/${urlParam}`);
-        const results = await result.json();
-        return results;
-    },
-    getById: async (characterId = '') => {
-        const result = await fetch(`${serviceConfig.baseUrl}/people/${characterId}`);
-        const results = await result.json();
-        return results;
-    },
-}
+  getAll: async (urlParam = "") => {
+    const data = await apiCall(urlParam);
+    return data;
+  },
+  getById: async (characterId = "") => {
+    const data = await apiCall(characterId);
+    return data;
+  },
+};
 
 export default peoples;
