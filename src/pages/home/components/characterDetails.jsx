@@ -4,17 +4,28 @@ import {
     useParams,
     useHistory
 } from "react-router-dom";
+import { CustomButton } from '../../../component/ui/atoms';
 
 const Character = () => {
+
+    const btnStyleDefault = {
+        backgroundColor: 'red',
+        display: 'block'
+    };
 
     const history = useHistory();
 
     let { id } = useParams();
 
     const [characterData, setCharacterData] = useState();
+    const [btnStyle, setBtnStyle] = useState(btnStyleDefault);
 
     useEffect(() => {
         fetchDetails();
+        setBtnStyle({ ...btnStyleDefault, backgroundColor: 'pink' });
+        setTimeout(() => {
+            setBtnStyle(btnStyleDefault);
+        }, 3000);
     }, [id]);
 
     const fetchDetails = async () => {
@@ -25,7 +36,12 @@ const Character = () => {
 
     return (
         <>
-            <button onClick={() => history.goBack()} style={{ display: 'block' }}>Regresar {id}</button>
+            <CustomButton
+                onClick={() => history.goBack()}
+                variant='primary'
+            >
+                Regresar {id}
+            </CustomButton>
             {characterData && (<span>hola {characterData.name}</span>)}
         </>
     )
