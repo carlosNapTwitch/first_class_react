@@ -34,7 +34,7 @@ const C_SideMenu = () => {
         },
         {
             label: 'Favoritas',
-            route: '/fav',
+            route: '/favorites',
         },
         {
             label: 'Buscador',

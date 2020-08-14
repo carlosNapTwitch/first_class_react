@@ -1,6 +1,6 @@
 import React from 'react';
-import LayoutTemplate from './component/ui/templates/layout';
-import './app.css'
+import LayoutTemplate from './component/templates/layout';
+import './app.css';
 
 const App = () => {
     return (
