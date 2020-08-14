@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 const MainContent = styled.div`
-    background-color: yellow;
     grid-area: main;
     height: 100%;
+    padding: 3%;
 `;
 
 const C_Content = ({ children }) => {

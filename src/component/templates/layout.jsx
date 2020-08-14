@@ -1,13 +1,8 @@
 import React from 'react';
 import { AppBar, SideBar, MainContent } from '../molecules';
 import styled from 'styled-components';
-import { Switch, Route } from 'react-router-dom';
-import {
-    DashboardPage,
-    FavoritesPage,
-    ProfilePage,
-    SearchPage,
-} from '../vpages';
+import { Switch, Route, Redirect } from 'react-router-dom';
+import AppRoutes from '../_routes';
 
 const Layout = styled.div`
     width: 100%;
@@ -27,13 +22,6 @@ const Layout = styled.div`
 
 const LayoutTemplate = () => {
 
-    const pages = [
-        { path: '/favorites', component: FavoritesPage },
-        { path: '/profile', component: ProfilePage },
-        { path: '/search', component: SearchPage },
-        { path: '/', component: DashboardPage },
-    ];
-
     return (
         <Layout>
             <AppBar>TopBar</AppBar>
@@ -41,12 +29,15 @@ const LayoutTemplate = () => {
             <MainContent>
                 <Switch>
                     {
-                        pages.map((page, idx) => (
-                            <Route exact key={`${idx}_page`} path={page.path}>
-                                {page.component}
-                            </Route>
-                        ))
+                        AppRoutes.map((rout, idx) =>
+                            <Route
+                                key={`${idx}_page`}
+                                path={rout.route}
+                                render={props => <rout.component {...props} />}
+                            />
+                        )
                     }
+                    <Redirect from='/' to='/dashboard' />
                 </Switch>
             </MainContent>
         </Layout>
