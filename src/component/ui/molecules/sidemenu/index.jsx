@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const SideBar = styled.div`
     background-color: purple;
@@ -25,13 +26,38 @@ const Menu = styled.ul`
 `;
 
 const C_SideMenu = () => {
+
+    const sections = [
+        {
+            label: 'Dashboard',
+            route: '/',
+        },
+        {
+            label: 'Favoritas',
+            route: '/fav',
+        },
+        {
+            label: 'Buscador',
+            route: '/search',
+        },
+        {
+            label: 'Perfil',
+            route: '/profile',
+        }
+    ]
+
     return (
         <SideBar>
             <Menu>
-                <li>Dashboard</li>
-                <li>Favoritas</li>
-                <li>Buscador</li>
-                <li>Perfil</li>
+                {
+                    sections.map((section, idx) =>
+                        <li key={idx} >
+                            <Link to={section.route}>
+                                {section.label}
+                            </Link>
+                        </li>
+                    )
+                }
             </Menu>
         </SideBar>
     )
