@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const MainContent = styled.div`
     grid-area: main;
     height: 100%;
-    padding: 3%;
+    padding: 1%;
 `;
 
 const C_Content = ({ children }) => {

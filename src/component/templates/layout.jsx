@@ -8,10 +8,11 @@ const Layout = styled.div`
     width: 100%;
     height: 100%;
     display: grid;
-    grid-template-columns: 0.6fr 1.1fr 1.4fr 0.9fr;
-    grid-template-rows: 0.2fr 1.8fr;
+    grid-template-columns: 0.4fr 1.6fr 1fr 1fr;
+    grid-template-rows: 0.1fr 1.9fr 1fr;;
     grid-template-areas: 
         "topbar topbar topbar topbar"
+        "sidebar main main main"
         "sidebar main main main";
     @media(max-width: 450px) {
         grid-template-areas:

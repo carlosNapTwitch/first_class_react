@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 const SideBar = styled.div`
     grid-area: sidebar;
+    max-width: 10vw;
     height: 100%;
     padding: 1%;
     box-shadow: 1px 3px 2px 0px #b5b5b5;

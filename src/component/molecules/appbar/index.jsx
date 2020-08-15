@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 const AppBar = styled.div`
     grid-area: topbar;
-    height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -12,8 +11,10 @@ const AppBar = styled.div`
 `;
 
 const Logo = styled.span`
-    width: 45px;
+    width: 30px;
+    height: 30px;
     & img {
+        max-height: 100%;
         max-width: 100%
     }
 `;

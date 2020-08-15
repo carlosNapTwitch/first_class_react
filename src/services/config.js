@@ -1,5 +1,5 @@
 const serviceConfig = {
-    baseUrl: 'http://swapi.dev/api',
+    baseUrl: 'https://api.themoviedb.org/3',
 }
 
 export default serviceConfig;
