@@ -8,6 +8,7 @@ const Movie = styled.div`
     height: 24vh;
     overflow: hidden;
     margin: 1%;
+    cursor: pointer;
     & > img {
         max-width: 100%;
     }
@@ -24,9 +25,9 @@ const Movie = styled.div`
     }
 `;
 
-const MovieItem = ({ movie }) => {
+const MovieItem = ({ movie, ...props }) => {
     return (
-        <Movie>
+        <Movie {...props}>
             <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt="" />
             <span>{movie.original_title}</span>
         </Movie>

@@ -1,17 +1,10 @@
 import React, { useState } from 'react';
-import { movies } from '../../../services';
-import MovieItem from '../../organism/movie';
-import styled from 'styled-components';
-
-const MovieContainer = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-`;
+import { movies, favorites } from '../../../services';
+import MovieList from '../../templates/movieList';
 
 const SearchPage = () => {
     const [query, setQuery] = useState('');
     const [results, setResults] = useState([]);
-
 
     const findMovie = async () => {
         try {
@@ -21,16 +14,22 @@ const SearchPage = () => {
             console.log({ error });
         }
     }
+
+    const selectFavMovie = async (item) => {
+        console.log({ item });
+        try {
+            const response = await favorites.addNew(item);
+            console.log({ response });
+        } catch (error) {
+            console.log('error on create favorite movie');
+        }
+    }
+
     return (
         <>
             <input type='text' value={query} onChange={e => setQuery(e.target.value)} />
             <button onClick={() => findMovie()}>Buscar</button>
-            <MovieContainer>
-                {
-                    results.map((item, idx) =>
-                        <MovieItem key={`movie_item_${idx}`} movie={item} />)
-                }
-            </MovieContainer>
+            <MovieList movies={results} onSelectItem={selectFavMovie} />
         </>
     );
 }
