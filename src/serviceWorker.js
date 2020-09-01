@@ -10,10 +10,6 @@
 // To learn more about the benefits of this model and instructions on how to
 // opt-in, read https://bit.ly/CRA-PWA
 
-<<<<<<< HEAD
-import { registerRoute } from 'workbox-routing';
-import { NetworkFirst, StaleWhileRevalidate } from 'workbox-strategies';
-
 const isLocalhost = Boolean(
   window.location.hostname === 'localhost' ||
   // [::1] is the IPv6 localhost address.
@@ -22,16 +18,6 @@ const isLocalhost = Boolean(
   window.location.hostname.match(
     /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
   )
-=======
-const isLocalhost = Boolean(
-  window.location.hostname === 'localhost' ||
-    // [::1] is the IPv6 localhost address.
-    window.location.hostname === '[::1]' ||
-    // 127.0.0.0/8 are considered localhost for IPv4.
-    window.location.hostname.match(
-      /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
-    )
->>>>>>> a29032ebcebc3beb7dc902b411506b9cdff0f6e5
 );
 
 export function register(config) {
@@ -57,16 +43,8 @@ export function register(config) {
         navigator.serviceWorker.ready.then(() => {
           console.log(
             'This web app is being served cache-first by a service ' +
-<<<<<<< HEAD
             'worker. To learn more, visit https://bit.ly/CRA-PWA'
           );
-
-          customWorkBox();
-
-=======
-              'worker. To learn more, visit https://bit.ly/CRA-PWA'
-          );
->>>>>>> a29032ebcebc3beb7dc902b411506b9cdff0f6e5
         });
       } else {
         // Is not localhost. Just register service worker
@@ -93,11 +71,7 @@ function registerValidSW(swUrl, config) {
               // content until all client tabs are closed.
               console.log(
                 'New content is available and will be used when all ' +
-<<<<<<< HEAD
                 'tabs for this page are closed. See https://bit.ly/CRA-PWA.'
-=======
-                  'tabs for this page are closed. See https://bit.ly/CRA-PWA.'
->>>>>>> a29032ebcebc3beb7dc902b411506b9cdff0f6e5
               );
 
               // Execute callback
@@ -165,15 +139,3 @@ export function unregister() {
       });
   }
 }
-<<<<<<< HEAD
-
-function customWorkBox() {
-  console.log('aquiiii yeahhhhh');
-  registerRoute(
-    'http://192.168.1.117:4000/favorites',
-    new NetworkFirst(),
-  );
-}
-
-=======
->>>>>>> a29032ebcebc3beb7dc902b411506b9cdff0f6e5
