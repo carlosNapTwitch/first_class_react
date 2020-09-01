@@ -23,7 +23,11 @@ const C_AppBar = () => {
     return (
         <AppBar>
             <Logo>
+<<<<<<< HEAD
                 <img src='https://ellenteweb.files.wordpress.com/2017/04/movie-icon-27.png?w=900' alt='imagexD' />
+=======
+                <img src='https://ellenteweb.files.wordpress.com/2017/04/movie-icon-27.png?w=900' alt="logo" />
+>>>>>>> a29032ebcebc3beb7dc902b411506b9cdff0f6e5
             </Logo>
             <span>USer</span>
         </AppBar>
