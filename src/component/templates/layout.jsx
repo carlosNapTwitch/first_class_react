@@ -1,7 +1,7 @@
 import React from 'react';
 import { AppBar, SideBar, MainContent } from '../molecules';
 import styled from 'styled-components';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import AppRoutes from '../_routes';
 
 const Layout = styled.div`
@@ -32,13 +32,13 @@ const LayoutTemplate = () => {
                     {
                         AppRoutes.map((rout, idx) =>
                             <Route
+                                exact={true}
                                 key={`${idx}_page`}
                                 path={rout.route}
                                 render={props => <rout.component {...props} />}
                             />
                         )
                     }
-                    <Redirect from='/' to='/dashboard' />
                 </Switch>
             </MainContent>
         </Layout>

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import useUSer from '../../../services/user';
 
 const SideBar = styled.div`
     grid-area: sidebar;
@@ -8,6 +9,7 @@ const SideBar = styled.div`
     height: 100%;
     padding: 1%;
     box-shadow: 1px 3px 2px 0px #b5b5b5;
+    position: relative;
     @media(max-width: 450px) {
         display: none;
     }
@@ -18,7 +20,8 @@ const Menu = styled.ul`
     padding: 0;
     & a {
         text-decoration: none;
-    }
+
+    };
     & li {
         list-style-type: none;
         padding: 6%;
@@ -28,15 +31,24 @@ const Menu = styled.ul`
             background-color: rgb(166 166 166);
             color: #fff;
         }
+    };
+    & .logout {
+        position: absolute; 
+        bottom: 0;
+        width: 100%;
     }
 `;
 
 const C_SideMenu = () => {
+    const user = useUSer();
+    const history = useHistory();
+
+    const base = '/dashboard';
 
     const sections = [
         {
             label: 'Dashboard',
-            route: '/',
+            route: '/main',
         },
         {
             label: 'Favoritas',
@@ -50,7 +62,12 @@ const C_SideMenu = () => {
             label: 'Perfil',
             route: '/profile',
         }
-    ]
+    ].map(item => { item.route = `${base}${item.route}`; return item });
+
+    const doLogOut = () => {
+        user.logout();
+        history.replace('/')
+    }
 
     return (
         <SideBar>
@@ -64,6 +81,9 @@ const C_SideMenu = () => {
                         </Link>
                     )
                 }
+                <li className='logout' onClick={doLogOut}>
+                    LogOut
+                </li>
             </Menu>
         </SideBar>
     )

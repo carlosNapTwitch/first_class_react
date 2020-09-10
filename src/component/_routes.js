@@ -6,6 +6,7 @@ import {
     FriendsPage
 } from './vpages';
 
+const base = '/dashboard';
 const AppRoutes = [
     {
         label: 'Buscador',
@@ -29,9 +30,9 @@ const AppRoutes = [
     },
     {
         label: 'Dashboard',
-        route: '/dashboard',
+        route: '/main',
         component: DashboardPage,
     },
-]
+].map(item => { item.route = `${base}${item.route}`; return item });
 
 export default AppRoutes;
