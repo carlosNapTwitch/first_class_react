@@ -1,15 +1,19 @@
 import Xhrservice from './xhr';
+import configUrl from './config';
 
-const endpoint = "http://localhost:4000/favorites";
+const endpoint = '/favorites';
+
+
 
 const favorites = {
     addNew: (movie) => {
-        return Xhrservice.Post(endpoint, movie);
+        return Xhrservice.Post(`${configUrl.backEndUrl}${endpoint}`, movie);
     },
     getAll: () => {
-        Xhrservice.basePath = "http://localhost:4000";
+        console.log(configUrl.backEndUrl)
+        Xhrservice.basePath = configUrl.backEndUrl;
         Xhrservice.apiKey = "";
-        return Xhrservice.Get("/favorites");
+        return Xhrservice.Get(endpoint);
     }
 }
 
